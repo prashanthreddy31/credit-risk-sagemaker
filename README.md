@@ -113,8 +113,9 @@ curl -X POST https://<your-api-id>.execute-api.us-east-1.amazonaws.com/predict \
 ```python
 # Delete endpoint (most important — stops billing)
 sm_client.delete_endpoint()
+```
 
 ## Author
-- [Prashanth S V](https://github.com/prashanthreddy31)
+[Prashanth S V](https://github.com/prashanthreddy31)
 
 Built as a portfolio project demonstrating end-to-end MLOps on AWS SageMaker.
