@@ -5,6 +5,8 @@ built entirely on Amazon SageMaker.
 
 ## Architecture
 
+![MLOps Architecture](images/architecture.svg)
+
 ```
 Raw Data (S3)
      ↓
