@@ -1,0 +1,14 @@
+
+config.json
+senv/
+data/
+.env
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.egg-info/
+dist/
+build/
+.DS_Store
+*.zip
+model_artifacts/
