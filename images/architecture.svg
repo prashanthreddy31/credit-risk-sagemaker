@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 820" style="font-family:ui-sans-serif,system-ui,sans-serif;background:transparent">
+  <title>Credit Risk Scoring — End-to-End MLOps on Amazon SageMaker</title>
+  <desc>Architecture diagram showing the full ML pipeline from raw S3 data through feature engineering, training, HPO, model registry, explainability, and real-time deployment via Lambda and API Gateway.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text font-size="15" font-weight="500" fill="#1a1a18" x="340" y="30" text-anchor="middle">Credit Risk Scoring — MLOps on Amazon SageMaker</text>
+
+  <!-- ── STAGE 1: Raw Data (Teal) ── -->
+  <g>
+    <rect x="230" y="52" width="220" height="52" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+    <text font-size="14" font-weight="500" fill="#085041" x="340" y="72" text-anchor="middle" dominant-baseline="central">Raw Data</text>
+    <text font-size="12" fill="#0F6E56" x="340" y="90" text-anchor="middle" dominant-baseline="central">307k loan applications · S3</text>
+  </g>
+
+  <line x1="340" y1="104" x2="340" y2="130" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- ── STAGE 2: Feature Engineering (Purple) ── -->
+  <g>
+    <rect x="200" y="132" width="280" height="52" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+    <text font-size="14" font-weight="500" fill="#3C3489" x="340" y="152" text-anchor="middle" dominant-baseline="central">Feature engineering</text>
+    <text font-size="12" fill="#534AB7" x="340" y="170" text-anchor="middle" dominant-baseline="central">SageMaker Processing Jobs</text>
+  </g>
+
+  <line x1="340" y1="184" x2="340" y2="210" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- ── STAGE 3: Model Training (Purple) ── -->
+  <g>
+    <rect x="200" y="212" width="280" height="52" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+    <text font-size="14" font-weight="500" fill="#3C3489" x="340" y="232" text-anchor="middle" dominant-baseline="central">Model training</text>
+    <text font-size="12" fill="#534AB7" x="340" y="250" text-anchor="middle" dominant-baseline="central">XGBoost · SageMaker Experiments</text>
+  </g>
+
+  <line x1="340" y1="264" x2="340" y2="290" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- ── STAGE 4: HPO (Purple) ── -->
+  <g>
+    <rect x="200" y="292" width="280" height="52" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+    <text font-size="14" font-weight="500" fill="#3C3489" x="340" y="312" text-anchor="middle" dominant-baseline="central">Hyperparameter tuning</text>
+    <text font-size="12" fill="#534AB7" x="340" y="330" text-anchor="middle" dominant-baseline="central">Bayesian HPO · 20 jobs</text>
+  </g>
+
+  <line x1="340" y1="344" x2="340" y2="370" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- ── STAGE 5: Model Registry (Blue) ── -->
+  <g>
+    <rect x="200" y="372" width="280" height="52" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text font-size="14" font-weight="500" fill="#0C447C" x="340" y="392" text-anchor="middle" dominant-baseline="central">Model registry</text>
+    <text font-size="12" fill="#185FA5" x="340" y="410" text-anchor="middle" dominant-baseline="central">Versioning · approval workflow</text>
+  </g>
+
+  <line x1="340" y1="424" x2="340" y2="450" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- ── STAGE 6: Explainability (Blue) ── -->
+  <g>
+    <rect x="200" y="452" width="280" height="52" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text font-size="14" font-weight="500" fill="#0C447C" x="340" y="472" text-anchor="middle" dominant-baseline="central">Explainability</text>
+    <text font-size="12" fill="#185FA5" x="340" y="490" text-anchor="middle" dominant-baseline="central">SageMaker Clarify · SHAP + bias</text>
+  </g>
+
+  <!-- Fan-out arrows to deployment tier -->
+  <path d="M280 504 L280 512 L144 512 L144 532" fill="none" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="340" y1="504" x2="340" y2="532" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+  <path d="M400 504 L400 512 L536 512 L536 532" fill="none" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- ── DEPLOYMENT TIER (Coral) ── -->
+  <g>
+    <rect x="60" y="532" width="168" height="52" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+    <text font-size="14" font-weight="500" fill="#712B13" x="144" y="552" text-anchor="middle" dominant-baseline="central">Real-time endpoint</text>
+    <text font-size="12" fill="#993C1D" x="144" y="570" text-anchor="middle" dominant-baseline="central">Sub-100ms inference</text>
+  </g>
+  <g>
+    <rect x="256" y="532" width="168" height="52" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+    <text font-size="14" font-weight="500" fill="#712B13" x="340" y="552" text-anchor="middle" dominant-baseline="central">AWS Lambda</text>
+    <text font-size="12" fill="#993C1D" x="340" y="570" text-anchor="middle" dominant-baseline="central">Invokes endpoint</text>
+  </g>
+  <g>
+    <rect x="452" y="532" width="168" height="52" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+    <text font-size="14" font-weight="500" fill="#712B13" x="536" y="552" text-anchor="middle" dominant-baseline="central">API Gateway</text>
+    <text font-size="12" fill="#993C1D" x="536" y="570" text-anchor="middle" dominant-baseline="central">REST API · public endpoint</text>
+  </g>
+
+  <!-- Horizontal flow between deployment boxes -->
+  <line x1="228" y1="558" x2="254" y2="558" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="424" y1="558" x2="450" y2="558" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- ── RESULTS ── -->
+  <g>
+    <rect x="180" y="618" width="320" height="68" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+    <text font-size="14" font-weight="500" fill="#2C2C2A" x="340" y="642" text-anchor="middle" dominant-baseline="central">Results</text>
+    <text font-size="12" fill="#5F5E5A" x="250" y="666" text-anchor="middle" dominant-baseline="central">Baseline AUC-ROC ~0.73</text>
+    <text font-size="12" fill="#5F5E5A" x="430" y="666" text-anchor="middle" dominant-baseline="central">After HPO AUC-ROC ~0.76</text>
+  </g>
+  <line x1="340" y1="628" x2="340" y2="678" stroke="#888780" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- ── LEGEND ── -->
+  <rect x="90" y="724" width="12" height="12" rx="2" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+  <text font-size="12" fill="#5F5E5A" x="108" y="735">Data</text>
+  <rect x="176" y="724" width="12" height="12" rx="2" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+  <text font-size="12" fill="#5F5E5A" x="194" y="735">ML pipeline</text>
+  <rect x="290" y="724" width="12" height="12" rx="2" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+  <text font-size="12" fill="#5F5E5A" x="308" y="735">Governance</text>
+  <rect x="404" y="724" width="12" height="12" rx="2" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+  <text font-size="12" fill="#5F5E5A" x="422" y="735">Deployment</text>
+
+  <!-- Pipelines note -->
+  <text font-size="12" fill="#888780" x="340" y="770" text-anchor="middle">Orchestrated via SageMaker Pipelines for automated retraining</text>
+</svg>
